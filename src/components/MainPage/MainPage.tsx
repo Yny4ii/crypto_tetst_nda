@@ -42,8 +42,8 @@ const MainPage = () => {
     if (firstCurrency && secondCurrency) {
       dispatch(
         fetchMinimalExchangeAmount({
-          from: firstCurrencyValue,
-          to: secondCurrency?.ticker,
+          from: firstCurrency.ticker,
+          to: secondCurrency.ticker,
         }),
       );
       if (minimalExchangeAmount > +debounceValue) {
@@ -52,8 +52,8 @@ const MainPage = () => {
         dispatch(
           fetchEstimatedExchangeAmount({
             amount: debounceValue,
-            from: firstCurrency?.ticker,
-            to: secondCurrency?.ticker,
+            from: firstCurrency.ticker,
+            to: secondCurrency.ticker,
           }),
         );
       }
@@ -82,7 +82,7 @@ const MainPage = () => {
         <S.PageTitle>Crypto Exchange</S.PageTitle>
         <S.PageSubTitle>Exchange fast and easy</S.PageSubTitle>
       </S.TitleContainer>
-      {!isLoading && currencies && firstCurrency && secondCurrency && (
+      {!isLoading && currencies && firstCurrency && secondCurrency ? (
         <S.InputsContainer>
           <InputWithSelect
             currency={firstCurrency}
@@ -98,6 +98,8 @@ const MainPage = () => {
             disabled={true}
           />
         </S.InputsContainer>
+      ) : (
+        <div>Loading...</div>
       )}
 
       <S.WalletContainer>
