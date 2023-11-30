@@ -6,7 +6,7 @@ import { DARK_TURQUOISE, GRAY, LIGHT_BLUE, LIGHT_TURQUOISE } from "@/constants";
 export const SelectContainer = styled.div`
   border-radius: 5px;
   border: 1px solid ${LIGHT_TURQUOISE};
-  width: 100%;
+  width: calc(100% + 2px);
   max-height: 194px;
   overflow-y: scroll;
   background-color: ${GRAY};
